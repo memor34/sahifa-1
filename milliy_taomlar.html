@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milliy taomlar — O‘zbek dasturxoni</title>
+  <style>
+    :root { --green:#1e5b43; --gold:#e8b44d; --cream:#fff8ec; --ink:#26332d; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Arial, Helvetica, sans-serif; color:var(--ink); background:#fffdf8; line-height:1.6; }
+    header { background:var(--green); color:white; padding:18px 6%; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .logo { font-size:1.35rem; font-weight:800; letter-spacing:.3px; }
+    nav { display:flex; gap:18px; flex-wrap:wrap; }
+    nav a { color:white; text-decoration:none; font-weight:600; }
+    nav a:hover { color:var(--gold); }
+    .hero { min-height:420px; padding:75px 7%; display:flex; align-items:center; background:linear-gradient(90deg,rgba(15,45,32,.86),rgba(15,45,32,.25)), url('https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1800&q=85') center/cover; color:white; }
+    .hero-content { max-width:650px; }
+    .eyebrow { color:var(--gold); text-transform:uppercase; letter-spacing:2px; font-weight:bold; }
+    h1 { font-size:clamp(2.2rem,5vw,4rem); line-height:1.1; margin:12px 0 18px; }
+    .hero p { font-size:1.1rem; max-width:560px; }
+    .button { display:inline-block; background:var(--gold); color:#20352a; text-decoration:none; font-weight:bold; padding:12px 20px; border-radius:8px; margin-top:12px; }
+    section { padding:58px 6%; }
+    .section-heading { text-align:center; max-width:700px; margin:0 auto 30px; }
+    .section-heading h2 { color:var(--green); font-size:2rem; margin:0 0 8px; }
+    .filters { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin:0 0 26px; }
+    .filters button { border:1px solid #cbd8cf; background:white; color:var(--green); padding:9px 15px; border-radius:24px; cursor:pointer; font-weight:bold; }
+    .filters button.active, .filters button:hover { background:var(--green); color:white; }
+    .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; max-width:1200px; margin:auto; }
+    .food-card { background:white; border-radius:14px; overflow:hidden; box-shadow:0 5px 20px #183b2a12; border:1px solid #eee8dc; }
+    .food-card img { width:100%; height:210px; object-fit:cover; display:block; background:#eee; }
+    .food-info { padding:18px; }
+    .food-info h3 { color:var(--green); margin:0 0 7px; font-size:1.25rem; }
+    .tag { display:inline-block; font-size:.8rem; color:#72501a; background:#fff0cd; padding:3px 9px; border-radius:20px; margin-bottom:8px; }
+    .about { background:var(--cream); }
+    .about-inner { max-width:1000px; margin:auto; display:grid; grid-template-columns:1.1fr .9fr; align-items:center; gap:35px; }
+    .about-inner img { width:100%; border-radius:14px; max-height:330px; object-fit:cover; }
+    .about h2 { color:var(--green); font-size:2rem; margin-top:0; }
+    .facts { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px; }
+    .fact { background:white; border-radius:10px; padding:15px; text-align:center; }
+    .fact strong { display:block; color:var(--green); font-size:1.25rem; }
+    .contact { text-align:center; }
+    footer { background:#173d2d; color:#eaf2ec; text-align:center; padding:22px 6%; }
+    .hidden { display:none; }
+    @media(max-width:850px) { .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .about-inner { grid-template-columns:1fr; } }
+    @media(max-width:560px) { header { align-items:flex-start; } nav { gap:12px; } .grid { grid-template-columns:1fr; } .hero { min-height:390px; padding:55px 6%; } .facts { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🍽️ Milliy taomlar</div>
+    <nav aria-label="Asosiy menyu">
+      <a href="#bosh-sahifa">Bosh sahifa</a>
+      <a href="#taomlar">Taomlar</a>
+      <a href="#madaniyat">Milliy meros</a>
+      <a href="#aloqa">Aloqa</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="bosh-sahifa">
+      <div class="hero-content">
+        <div class="eyebrow">O‘zbek dasturxoni</div>
+        <h1>Har bir taomda — bir tarix</h1>
+        <p>O‘zbek milliy taomlarining betakror ta’mi, mehmondo‘stlik an’analari va boy oshxona madaniyati bilan tanishing.</p>
+        <a class="button" href="#taomlar">Taomlarni ko‘rish ↓</a>
+      </div>
+    </section>
+
+    <section id="taomlar">
+      <div class="section-heading">
+        <h2>Sevimli milliy taomlarimiz</h2>
+        <p>Har bir hududning o‘ziga xos ta’mi bor. Quyidagi bo‘limlardan taom turini tanlang.</p>
+      </div>
+      <div class="filters" aria-label="Taomlarni saralash">
+        <button class="active" data-filter="all">Barchasi</button>
+        <button data-filter="asosiy">Asosiy taomlar</button>
+        <button data-filter="sho'rva">Sho‘rvalar</button>
+        <button data-filter="shirinlik">Shirinliklar</button>
+      </div>
+
+      <div class="grid" id="food-grid">
+        <article class="food-card" data-category="asosiy">
+          <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80" alt="Guruchli taom, palovga o‘xshash taom" loading="lazy">
+          <div class="food-info"><span class="tag">Asosiy taom</span><h3>O‘zbek palovi</h3><p>Guruch, sabzi, piyoz va go‘shtdan tayyorlanadigan, to‘y va bayram dasturxonining ko‘rki.</p></div>
+        </article>
+        <article class="food-card" data-category="asosiy">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80" alt="Tandirda pishirilgan non" loading="lazy">
+          <div class="food-info"><span class="tag">Non mahsuloti</span><h3>Non</h3><p>O‘zbek dasturxonining muqaddas ne’mati. Obi non va patir kabi turlari keng tarqalgan.</p></div>
+        </article>
+        <article class="food-card" data-category="asosiy">
+          <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80" alt="Go‘shtli taom" loading="lazy">
+          <div class="food-info"><span class="tag">Asosiy taom</span><h3>Manti</h3><p>Yupqa xamir ichiga go‘sht va piyoz solib, bug‘da pishiriladigan mazali taom.</p></div>
+        </article>
+        <article class="food-card" data-category="sho'rva">
+          <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80" alt="Sabzavotli sho‘rva" loading="lazy">
+          <div class="food-info"><span class="tag">Sho‘rva</span><h3>Qaynatma sho‘rva</h3><p>Go‘sht, kartoshka, sabzi va boshqa sabzavotlar bilan sekin qaynatib tayyorlanadi.</p></div>
+        </article>
+        <article class="food-card" data-category="asosiy">
+          <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=80" alt="Lag‘monga o‘xshash ugra taomi" loading="lazy">
+          <div class="food-info"><span class="tag">Asosiy taom</span><h3>Lag‘mon</h3><p>Cho‘zma xamir, sabzavot va go‘shtli qayla uyg‘unligidan hosil bo‘ladigan to‘yimli taom.</p></div>
+        </article>
+        <article class="food-card" data-category="shirinlik">
+          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80" alt="Shirin pishiriq" loading="lazy">
+          <div class="food-info"><span class="tag">Shirinlik</span><h3>Holva va shirinliklar</h3><p>Bayramlarda va mehmon kutishda dasturxonga tortiladigan turli shirinliklar.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="about" id="madaniyat">
+      <div class="about-inner">
+        <div>
+          <h2>Taom — madaniyat ko‘zgusi</h2>
+          <p>O‘zbek oshxonasi asrlar davomida shakllangan an’analar, mahalliy mahsulotlar va avloddan avlodga o‘tib kelayotgan retseptlarga boy.</p>
+          <p>Mehmonni dasturxon atrofida kutib olish, nonni e’zozlash va taomni birga baham ko‘rish xalqimizning samimiy mehmondo‘stligini ifodalaydi.</p>
+          <div class="facts">
+            <div class="fact"><strong>Palov</strong><span>Bayramlar taomi</span></div>
+            <div class="fact"><strong>Non</strong><span>Hurmat ramzi</span></div>
+            <div class="fact"><strong>Dasturxon</strong><span>Mehmondo‘stlik</span></div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85" alt="Dasturxonga tortilgan taomlar" loading="lazy">
+      </div>
+    </section>
+
+    <section class="contact" id="aloqa">
+      <div class="section-heading">
+        <h2>Milliy taomlar olamiga xush kelibsiz!</h2>
+        <p>Ushbu sahifa o‘quv amaliyoti uchun namunaviy loyiha sifatida tayyorlandi. Taomlar ro‘yxati va rasmlarni o‘zingizga moslab kengaytirishingiz mumkin.</p>
+        <a class="button" href="#bosh-sahifa">Yuqoriga qaytish ↑</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Milliy taomlar | O‘zbek oshxonasi — milliy boyligimiz</p>
+  </footer>
+
+  <script>
+    const filterButtons = document.querySelectorAll('.filters button');
+    const cards = document.querySelectorAll('.food-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        filterButtons.forEach(item => item.classList.toggle('active', item === button));
+        cards.forEach(card => {
+          card.classList.toggle('hidden', filter !== 'all' && card.dataset.category !== filter);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
